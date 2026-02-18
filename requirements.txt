@@ -1,0 +1,10 @@
+django>=5.0
+django-environ
+chromadb
+langchain
+langgraph
+google-generativeai
+python-docx
+pypdf
+python-dotenv
+requests
