@@ -2,9 +2,13 @@ django>=5.0
 django-environ
 chromadb
 langchain
+langchain-community
+langchain-text-splitters
 langgraph
 google-generativeai
-python-docx
-pypdf
+unstructured[docx,pdf,md,json]
+python-magic-bin
 python-dotenv
 requests
+chromadb
+sentence-transformers
