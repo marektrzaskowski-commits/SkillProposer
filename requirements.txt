@@ -1,5 +1,6 @@
 django>=5.0
 django-environ
+django-bootstrap5
 chromadb
 langchain
 langchain-community

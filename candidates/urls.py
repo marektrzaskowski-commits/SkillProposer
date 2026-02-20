@@ -4,5 +4,6 @@ from . import views
 app_name = 'candidates'
 
 urlpatterns = [
-    # Tutaj w przyszłości dodamy widoki, np. do listowania kandydatów.
+    path('search/', views.search_candidates, name='search'),
+    path('team-composition/', views.propose_team, name='team_composition'),
 ]

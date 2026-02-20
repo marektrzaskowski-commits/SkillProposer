@@ -1,4 +1,3 @@
-
 # Document Processing System
 
 ## Overview
@@ -42,3 +41,10 @@ System for processing CV documents in multiple formats to build knowledge base (
 * **Web Framework**: Django
 * **Vector Database**: Chroma or FAISS
 * **Hosting**: Local deployment with WSL (Windows Subsystem for Linux) option
+
+## User Interface
+- The web interface will use the Bootstrap framework for styling to ensure a clean and modern look.
+- The main screen of the application will feature a navigation bar with three main sections (tabs):
+  1.  **List All CVs**: A view that displays all uploaded documents and their processing status.
+  2.  **Upload CV**: The existing interface for uploading new CV documents.
+  3.  **Team Composition**: The interface for generating team proposals based on required skills.

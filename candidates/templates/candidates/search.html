@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search Candidates</title>
+    </head>
+    <body>
+        <h1>Search Candidates</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+        {% if candidates %}
+            <h2>Search Results</h2>
+            <ul>
+                {% for candidate in candidates %}
+                    <li>{{ candidate.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+                <p>No candidates found.</p>
+        {% endif %}
+
+
+        <p><a href="{% url 'ingestion:upload_document' %}">Przeslij nowy dokument CV</a></p>
+    </body>
+</html>

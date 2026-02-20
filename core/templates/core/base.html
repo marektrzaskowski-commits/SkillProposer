@@ -1,0 +1,44 @@
+<!-- core/templates/core/base.html -->
+   {% load django_bootstrap5 %}
+         <!doctype html>
+         <html lang="pl">
+         <head>
+             <meta charset="utf-8">
+             <meta name="viewport" content="width=device-width, initial-scale=1">
+             <title>{% block title %}SkillProposer{% endblock %}</title>
+             {% bootstrap_css %}
+             <style>
+                body { padding-top: 5rem; }
+            </style>
+        </head>
+        <body>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'ingestion:upload_document' %}">SkillProposer</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarsExampleDefault">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'upload_document' %}active{% endif %}" href="{% url 'ingestion:upload_document' %}">Wgraj CV</a>
+                         </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'team_composition' %}active{% endif %}" href="{% url 'candidates:team_composition' %}">Zaproponuj Zespół</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'search' %}active{% endif %}" href="{% url 'candidates:search' %}">Szukaj Kandydatów</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <main class="container">
+                <div class="bg-light p-5 rounded">
+                    {% block content %}{% endblock %}
+                </div>
+            </main>
+            {% bootstrap_javascript %}
+        </body>
+        </html>
