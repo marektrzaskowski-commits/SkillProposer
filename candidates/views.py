@@ -1,24 +1,27 @@
 from concurrent.futures import CancelledError
+from functools import lru_cache
 
 from django.shortcuts import render
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import Chroma
 from sqlalchemy import null
 
-from candidates.agents import TeamCompositionAgent
+from candidates.agents.TeamCompositionAgent import TeamCompositionAgent
 from candidates.forms import SkillSearchForm, TeamCompositionForm
 from candidates.models import Candidate
 
-embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-vector_storage = Chroma(persist_directory="./chroma_db", embedding_function=embedding_model)
-
+@lru_cache(maxsize=1)
+def get_vector_storage():
+    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    vector_storage = Chroma(persist_directory="./chroma_db", embedding_function=embedding_model)
+    return vector_storage
 
 def search_candidates(request):
     if request.method == 'POST':
         form = SkillSearchForm(request.POST)
         if form.is_valid():
             query_skills = form.cleaned_data['querySkills']
-            
+            vector_storage = get_vector_storage()
             searched_result = vector_storage.similarity_search(query_skills, k=10)  # Przykładowo zwróć 10 najbardziej podobnych kandydatów
 
             document_ids = [doc.metadata.get("document_id") for doc in searched_result]

@@ -1,6 +1,6 @@
 import os
 from django.conf import settings
-from candidates.agents import SkillExtractionAgent
+from candidates.agents.SkillExtractionAgent import SkillExtractionAgent
 from candidates.models import Candidate
 from ingestion.models import Document
 from langchain_community.document_loaders import UnstructuredFileLoader
