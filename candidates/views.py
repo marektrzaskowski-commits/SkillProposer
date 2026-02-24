@@ -1,10 +1,8 @@
-from concurrent.futures import CancelledError
 from functools import lru_cache
 
 from django.shortcuts import render
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import Chroma
-from sqlalchemy import null
 
 from candidates.agents.TeamCompositionAgent import TeamCompositionAgent
 from candidates.forms import SkillSearchForm, TeamCompositionForm
@@ -22,9 +20,16 @@ def search_candidates(request):
         if form.is_valid():
             query_skills = form.cleaned_data['querySkills']
             vector_storage = get_vector_storage()
+            
             searched_result = vector_storage.similarity_search(query_skills, k=10)  # Przykładowo zwróć 10 najbardziej podobnych kandydatów
 
             document_ids = [doc.metadata.get("document_id") for doc in searched_result]
+
+## uzyc kontentu z chroma
+## napisac prompta do openai z opisem outputu i wykorzystac go do wygenerowania odpowiedzi
+
+
+
             unique_ids = list(dict.fromkeys(filter(None, document_ids)))
 
             if ((unique_ids is not None) and len(unique_ids) > 0):
