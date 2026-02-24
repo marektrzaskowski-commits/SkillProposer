@@ -2,4 +2,4 @@ from django import forms
 from .models import Document
 
 class DocumentUploadForm(forms.Form):
-    file = forms.FileField(label='Wybierz plik do przetworzenia')
+    file = forms.FileField(label='Select a file to upload')

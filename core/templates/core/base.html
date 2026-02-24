@@ -22,13 +22,13 @@
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'upload_document' %}active{% endif %}" href="{% url 'ingestion:upload_document' %}">Wgraj CV</a>
+                                <a class="nav-link {% if request.resolver_match.url_name == 'upload_document' %}active{% endif %}" href="{% url 'ingestion:upload_document' %}">Upload CV</a>
                          </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'team_composition' %}active{% endif %}" href="{% url 'candidates:team_composition' %}">Zaproponuj Zespół</a>
+                                <a class="nav-link {% if request.resolver_match.url_name == 'team_composition' %}active{% endif %}" href="{% url 'candidates:team_composition' %}">Propose Team</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'search' %}active{% endif %}" href="{% url 'candidates:search' %}">Szukaj Kandydatów</a>
+                                <a class="nav-link {% if request.resolver_match.url_name == 'search' %}active{% endif %}" href="{% url 'candidates:search' %}">Search Candidates</a>
                             </li>
                         </ul>
                     </div>
